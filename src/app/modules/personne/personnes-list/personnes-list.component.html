@@ -1,0 +1,29 @@
+<form #personneForm=ngForm (ngSubmit)="savePerson()">
+    <div>
+        Nom : <input type="text" name="nom" placeholder="Enter Name" [(ngModel)]="personne.nom" #nom="ngModel">
+    </div>
+    <div>
+        Prénom : <input type="text" name="prenom" placeholder="Enter Name" [(ngModel)]="personne.prenom" #prenom="ngModel">
+    </div>
+    <div>
+       <button class="btn btn-success" [disabled]=!personneForm.valid>
+           Ajouter
+       </button>
+    </div>
+</form>
+<div>
+    <ul>
+        <li *ngFor="let elt of personnes">
+        {{ elt.nom }} {{ elt.prenom }}
+        <button (click)="deletePerson(elt.id)">
+            Supprimer
+        </button>
+        <button (click)="updatePerson(elt.id)">
+            Editer
+        </button>
+        <button (click)="personDetails(elt.id)">
+            Select
+        </button>
+        </li>
+    </ul>
+</div>
